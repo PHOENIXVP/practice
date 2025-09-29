@@ -18,6 +18,9 @@ dependencies:
   react-dom:
     specifier: 19.0.0
     version: 19.0.0(react@19.0.0)
+  react-hook-form:
+    specifier: 7.63.0
+    version: 7.63.0(react@19.0.0)
 
 devDependencies:
   '@eslint/eslintrc':
@@ -2730,6 +2733,15 @@ packages:
     dependencies:
       react: 19.0.0
       scheduler: 0.25.0
+    dev: false
+
+  /react-hook-form@7.63.0(react@19.0.0):
+    resolution: {integrity: sha512-ZwueDMvUeucovM2VjkCf7zIHcs1aAlDimZu2Hvel5C5907gUzMpm4xCrQXtRzCvsBqFjonB4m3x4LzCFI1ZKWA==}
+    engines: {node: '>=18.0.0'}
+    peerDependencies:
+      react: ^16.8.0 || ^17 || ^18 || ^19
+    dependencies:
+      react: 19.0.0
     dev: false
 
   /react-is@16.13.1:
