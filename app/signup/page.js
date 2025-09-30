@@ -1,7 +1,10 @@
 "use client";
 import { useForm } from "react-hook-form";
+import { Button } from "../../components/ui/Button";
+import Image from "next/image";
+import signupBanner from "../../public/signupBanner.jpg";
 
-export default function App() {
+export default function Someform() {
   const {
     register,
     handleSubmit,
@@ -27,10 +30,17 @@ export default function App() {
   const watchNewsletter = watch("newsletter");
 
   return (
-    <>
-      <h2>React Hook Form Example</h2>
-
-      <form onSubmit={handleSubmit(onSubmit)}>
+    <div className="flex max-md:flex-wrap max-w-5xl container mx-auto border max-md:border-none rounded-xl my-6 max-md:my-0 relative">
+      <Image
+        src={signupBanner}
+        className="rounded-l-xl max-md:rounded-none base-1/2 block max-md:hidden"
+        height="570"
+      />
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="space-y-4 p-6 base-1/2 mx-auto max-md:border rounded-xl max-md:m-4"
+      >
+        <h2 className="text-center text-2xl font-bold">Sign Up</h2>
         <div>
           <label htmlFor="firstName">First Name:</label>
           <input
@@ -41,7 +51,7 @@ export default function App() {
             })}
           />
           {errors.firstName && (
-            <span className="error">{errors.firstName.message}</span>
+            <span className="text-red-500">{errors.firstName.message}</span>
           )}
         </div>
 
@@ -55,7 +65,7 @@ export default function App() {
             })}
           />
           {errors.email && (
-            <span className="error">{errors.email.message}</span>
+            <span className="text-red-500">{errors.email.message}</span>
           )}
         </div>
 
@@ -68,7 +78,9 @@ export default function App() {
               required: "Age is required",
             })}
           />
-          {errors.age && <span className="error">{errors.age.message}</span>}
+          {errors.age && (
+            <span className="text-red-500">{errors.age.message}</span>
+          )}
         </div>
 
         <div>
@@ -86,13 +98,13 @@ export default function App() {
             <option value="au">Australia</option>
           </select>
           {errors.country && (
-            <span className="error">{errors.country.message}</span>
+            <span className="text-red-500">{errors.country.message}</span>
           )}
         </div>
 
         <div>
           <label>Gender:</label>
-          <div className="radio-group">
+          <div>
             <label>
               <input
                 type="radio"
@@ -113,13 +125,13 @@ export default function App() {
             </label>
           </div>
           {errors.gender && (
-            <span className="error">{errors.gender.message}</span>
+            <span className="text-red-500">{errors.gender.message}</span>
           )}
         </div>
 
         <div>
           <label>Interests:</label>
-          <div className="checkbox-group">
+          <div>
             <label>
               <input
                 type="checkbox"
@@ -144,13 +156,13 @@ export default function App() {
         </div>
 
         <div>
-          <label className="checkbox-label">
+          <label>
             <input type="checkbox" {...register("newsletter")} />
             Subscribe to newsletter
           </label>
 
           {watchNewsletter && (
-            <div className="conditional-field">
+            <div>
               <label htmlFor="preference">Newsletter Preference:</label>
               <select id="preference" {...register("preference")}>
                 <option value="daily">Daily</option>
@@ -161,19 +173,21 @@ export default function App() {
           )}
         </div>
 
-        <div className="button-group">
-          <button type="submit" className="btn btn-primary">
+        <div className="space-x-2">
+          <Button type="submit" varient="primary" className="btn btn-primary">
             Submit
-          </button>
-          <button
+          </Button>
+          <Button
             type="button"
+            // varient="secondary"
+            cVarient={["blue-600", "sky-400"]}
             onClick={() => reset()}
             className="btn btn-secondary"
           >
             Reset
-          </button>
+          </Button>
         </div>
       </form>
-    </>
+    </div>
   );
 }
