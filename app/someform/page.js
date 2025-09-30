@@ -1,8 +1,7 @@
 "use client";
 import { useForm } from "react-hook-form";
-import { Button } from "../../components/ui/Button";
 
-export default function Someform() {
+export default function App() {
   const {
     register,
     handleSubmit,
@@ -42,7 +41,7 @@ export default function Someform() {
             })}
           />
           {errors.firstName && (
-            <span className="text-red-500">{errors.firstName.message}</span>
+            <span className="error">{errors.firstName.message}</span>
           )}
         </div>
 
@@ -56,7 +55,7 @@ export default function Someform() {
             })}
           />
           {errors.email && (
-            <span className="text-red-500">{errors.email.message}</span>
+            <span className="error">{errors.email.message}</span>
           )}
         </div>
 
@@ -69,9 +68,7 @@ export default function Someform() {
               required: "Age is required",
             })}
           />
-          {errors.age && (
-            <span className="text-red-500">{errors.age.message}</span>
-          )}
+          {errors.age && <span className="error">{errors.age.message}</span>}
         </div>
 
         <div>
@@ -89,13 +86,13 @@ export default function Someform() {
             <option value="au">Australia</option>
           </select>
           {errors.country && (
-            <span className="text-red-500">{errors.country.message}</span>
+            <span className="error">{errors.country.message}</span>
           )}
         </div>
 
         <div>
           <label>Gender:</label>
-          <div>
+          <div className="radio-group">
             <label>
               <input
                 type="radio"
@@ -116,13 +113,13 @@ export default function Someform() {
             </label>
           </div>
           {errors.gender && (
-            <span className="text-red-500">{errors.gender.message}</span>
+            <span className="error">{errors.gender.message}</span>
           )}
         </div>
 
         <div>
           <label>Interests:</label>
-          <div>
+          <div className="checkbox-group">
             <label>
               <input
                 type="checkbox"
@@ -147,13 +144,13 @@ export default function Someform() {
         </div>
 
         <div>
-          <label>
+          <label className="checkbox-label">
             <input type="checkbox" {...register("newsletter")} />
             Subscribe to newsletter
           </label>
 
           {watchNewsletter && (
-            <div>
+            <div className="conditional-field">
               <label htmlFor="preference">Newsletter Preference:</label>
               <select id="preference" {...register("preference")}>
                 <option value="daily">Daily</option>
@@ -164,17 +161,17 @@ export default function Someform() {
           )}
         </div>
 
-        <div>
-          <Button type="submit" className="btn btn-primary">
+        <div className="button-group">
+          <button type="submit" className="btn btn-primary">
             Submit
-          </Button>
-          <Button
+          </button>
+          <button
             type="button"
             onClick={() => reset()}
             className="btn btn-secondary"
           >
             Reset
-          </Button>
+          </button>
         </div>
       </form>
     </>
