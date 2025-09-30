@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { Button } from "../../components/ui/Button";
 import Image from "next/image";
 import signupBanner from "../../public/signupBanner.jpg";
+import { Input } from "../../components/ui/Input";
 
 export default function Someform() {
   const {
@@ -43,7 +44,7 @@ export default function Someform() {
         <h2 className="text-center text-2xl font-bold">Sign Up</h2>
         <div>
           <label htmlFor="firstName">First Name:</label>
-          <input
+          <Input
             id="firstName"
             type="text"
             {...register("firstName", {
