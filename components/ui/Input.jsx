@@ -1,6 +1,7 @@
 import { primary, secondary } from "../../cnostants/tvar";
 
 export const Input = ({
+  type,
   className,
   varient = "primary",
   cVarient,
@@ -19,5 +20,15 @@ export const Input = ({
     ${cVarient ? varientClass.custom : ""}
     ${varient ? varientClass[varient] : ""} ${className ? className : ""}`;
 
-  return <Input className={`px-3 py-2 rounded-lg ${classes}`} {...props} />;
+  return (
+    <input
+      type={type}
+      className={`${
+        type === "text" || type === "number" || type === "email"
+          ? "px-3 py-2 rounded-lg w-full"
+          : ""
+      } ${classes}`}
+      {...props}
+    />
+  );
 };

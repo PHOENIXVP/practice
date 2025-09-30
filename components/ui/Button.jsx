@@ -21,7 +21,10 @@ export const Button = ({
     ${varient ? varientClass[varient] : ""} ${className ? className : ""}`;
 
   return (
-    <button className={`px-3 py-2 rounded-lg ${classes}`} {...props}>
+    <button
+      className={`${classes} px-3 py-2 rounded-lg coursor-pointer duration-150 ease-in-out`}
+      {...props}
+    >
       {children}
     </button>
   );
